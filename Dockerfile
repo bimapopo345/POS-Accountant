@@ -1,5 +1,5 @@
-# Gunakan image resmi PHP 8.1-FPM
-FROM php:8.1-fpm
+# Gunakan image resmi PHP 8.2-FPM
+FROM php:8.2-fpm
 
 # Set environment variables
 ENV TZ=Asia/Jakarta
@@ -43,6 +43,9 @@ RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
 
 # Copy NGINX configuration
 COPY ./docker/nginx/default.conf /etc/nginx/conf.d/default.conf
+
+# Copy Supervisor configuration
+COPY ./docker/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 
 # Expose port 80
 EXPOSE 80
