@@ -32,11 +32,11 @@ WORKDIR /var/www
 # Copy existing application directory contents
 COPY . .
 
+# Copy .env.example to .env
+RUN cp .env.example .env
+
 # Install dependencies
 RUN composer install --no-dev --optimize-autoloader
-
-# Generate APP_KEY jika belum ada
-RUN php artisan key:generate
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
