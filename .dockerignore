@@ -1,0 +1,5 @@
+echo ".git
+vendor
+node_modules
+.env
+docker/
